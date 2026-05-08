@@ -2,16 +2,11 @@
 import { AlertDialog, Button, Table } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
-
-
 const UsersTable = ({ users, deleteUserAction }) => {
 
     const handleDelete= async(userid)=>{
 await deleteUserAction(userid)
     }
-
-
-
   return (
     <Table>
       <Table.ScrollContainer>

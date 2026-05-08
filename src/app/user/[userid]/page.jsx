@@ -11,5 +11,4 @@ console.log(user)
     </div>
   );
 };
-
 export default UserDetailsPage;

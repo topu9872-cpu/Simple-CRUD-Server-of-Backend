@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const cors = require('cors')
 const port = process.env.PORT || 5000;
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://simple-CRUD-users:IMqLnC99ZzaaP1l7@cluster0.pjlhif7.mongodb.net/?appName=Cluster0`;
+const uri =`mongodb+srv://simple-CRUD-users:IMqLnC99ZzaaP1l7@cluster0.pjlhif7.mongodb.net/?appName=Cluster0`;
 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -36,7 +36,29 @@ const run = async () => {
 
     })
 
+    app.get('/users/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = {
+        _id: new ObjectId(id)
+      };
 
+      const user = await userCollection.findOne(query)
+
+      console.log(id);
+      res.send(user);
+    });
+
+
+    app.delete('/users/:id', async(req,res)=>{
+      const id= req.params.id;
+      console.log(id)
+      const query={
+        _id:new ObjectId(id)
+      }
+      const result= await userCollection.deleteOne(query);
+      console.log(result)
+      res.send(result);
+    })
 
 
 

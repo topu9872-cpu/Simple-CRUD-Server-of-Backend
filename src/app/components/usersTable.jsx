@@ -27,7 +27,7 @@ await deleteUserAction(userid)
                   <Link href={`/user/${user._id}`}>
                     <Button variant="outline">Details</Button>
                   </Link>
-                  <Link href={`/users/${user._id}`}>
+                  <Link href={`/user/${user._id}/edit`}>
                     <Button variant="primary">Edit</Button>
                   </Link>
 
